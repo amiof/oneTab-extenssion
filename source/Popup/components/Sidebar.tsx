@@ -27,6 +27,14 @@ const SideBar = ({ setClick }: Props) => {
         id="options__button"
         type="button"
         onClick={() => {
+          setClick("urls");
+        }}
+      >Urls
+      </button>
+      <button
+        id="options__button"
+        type="button"
+        onClick={() => {
           setClick("addUrl")
         }
         }
