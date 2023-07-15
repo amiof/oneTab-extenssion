@@ -12,6 +12,7 @@ height: 100%;
   align-items: center;
   #container{
     border: 1px solid gray;
+    border-radius: 25px;
     width: 300px;
     min-height: 400px;
     div{
@@ -25,7 +26,7 @@ height: 100%;
   h2{
     font-size: 24px;
     text-align: center;
-    color: lightsalmon;
+    color:red;
     padding-top: 40px;
 
 
@@ -38,19 +39,20 @@ height: 100%;
     input{
       padding: 5px;
       border-radius: 10px;
-      background-color: lightskyblue;
+      background-color: gray;
       color: black;
       font-size: 18px;
     }
     
   }
   .loginButton{
-    background: blue;
+    background: red;
     color: white;
     padding: 5px 10px;
     border-radius: 10px;
     margin-top: 60px;
     width: 120px;
+    cursor: pointer;
     
   }
 

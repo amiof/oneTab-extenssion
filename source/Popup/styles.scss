@@ -42,6 +42,7 @@ display:grid;
   }
 #sideBarContent {
   min-width: fit-content;
+  border-right: 1px solid gray;
   min-height: full;
   display: flex;
   justify-content: center;
