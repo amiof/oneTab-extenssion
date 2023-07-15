@@ -6,6 +6,15 @@ body {
   color: $greyWhite;
   background-color: $black;
 }
+.popUp{
+  margin:10px 10px ;
+}
+.divider{
+  border-bottom: 1px solid white;
+  width:500px;
+  margin:auto;
+  height: 1px;
+  }
 .container{
 width: 550px;
 height: 600px;
@@ -22,18 +31,21 @@ display:grid;
   }
 }
 .title {
-    border: 1px solid yellow; 
     font-size: 25px;
     text-align: center;
     grid-column:1/9;
    grid-row:1;
   
   }
+  .divider{
+    border-bottom: 1px solid gray;
+  }
 #sideBarContent {
-  border:1px solid white;
   min-width: fit-content;
   min-height: full;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   #options__button {
     width: fit-content;

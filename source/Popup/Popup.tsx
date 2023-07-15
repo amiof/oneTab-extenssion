@@ -13,10 +13,12 @@ const Popup: React.FC = () => {
   }
   return (
     <div className='container'>
-      <h2 className='title'>ONE-Tab</h2>
+      <div className='title'>
+        <h2 >ONE-Tab</h2>
+        <div className='divider'></div>
+      </div>
       <div className='popUp'>
         <SideBar {...urlProps} />
-
       </div >
       <div className='content'>
         {Click == "addUrl" ? <AddUrl></AddUrl> : null}
