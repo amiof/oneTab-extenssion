@@ -1,8 +1,9 @@
 import * as React from 'react';
-import AddUrl from './components/AddUrl';
+import Login from './components/Login';
 import AllUrls from './components/AllUrls';
 import SideBar from './components/Sidebar';
 import './styles.scss';
+import Register from './components/Register';
 
 
 const Popup: React.FC = () => {
@@ -22,8 +23,8 @@ const Popup: React.FC = () => {
         <SideBar {...urlProps} />
       </div >
       <div className='content'>
-        {Click == "addUrl" ? <AddUrl></AddUrl> : null}
-        {Click == "removeUrl" ? <p className='log'>{Click}</p> : null}
+        {Click == "login" ? <Login></Login> : null}
+        {Click == "register" ? <Register></Register>: null}
         {Click == "urls"||Click=="notClicked" ? <AllUrls></AllUrls> : null}
       </div>
     </div>

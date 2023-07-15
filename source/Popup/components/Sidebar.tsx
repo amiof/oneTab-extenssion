@@ -19,9 +19,19 @@ const SideBar = ({ setClick }: Props) => {
         id="options__button"
         type="button"
         onClick={() => {
-          setClick("removeUrl");
+          setClick("register");
         }}
-      >removeUrl
+      >Register
+      </button>
+      <button
+        id="options__button"
+        type="button"
+        onClick={() => {
+          setClick("login")
+        }
+        }
+      >
+        Login
       </button>
       <button
         id="options__button"
@@ -30,16 +40,6 @@ const SideBar = ({ setClick }: Props) => {
           setClick("urls");
         }}
       >Urls
-      </button>
-      <button
-        id="options__button"
-        type="button"
-        onClick={() => {
-          setClick("addUrl")
-        }
-        }
-      >
-        add url
       </button>
       <button
         id="options__button"
