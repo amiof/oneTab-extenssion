@@ -1,35 +1,33 @@
 import * as React from 'react';
-import { browser, Tabs } from 'webextension-polyfill-ts';
+import {browser, Tabs} from 'webextension-polyfill-ts';
 
 import '../styles.scss';
 
 function openWebPage(url: string): Promise<Tabs.Tab> {
-  return browser.tabs.create({ url });
+  return browser.tabs.create({url});
 }
 
 interface Props {
   setClick: React.Dispatch<React.SetStateAction<string>>;
 }
-const SideBar = ({ setClick }: Props) => {
-
-
+const SideBar = ({setClick}: Props) => {
   return (
     <section id="sideBarContent">
       <button
         id="options__button"
         type="button"
         onClick={() => {
-          setClick("register");
+          setClick('register');
         }}
-      >Register
+      >
+        Register
       </button>
       <button
         id="options__button"
         type="button"
         onClick={() => {
-          setClick("login")
-        }
-        }
+          setClick('login');
+        }}
       >
         Login
       </button>
@@ -37,9 +35,10 @@ const SideBar = ({ setClick }: Props) => {
         id="options__button"
         type="button"
         onClick={() => {
-          setClick("urls");
+          setClick('urls');
         }}
-      >Urls
+      >
+        Urls
       </button>
       <button
         id="options__button"
@@ -50,9 +49,8 @@ const SideBar = ({ setClick }: Props) => {
       >
         setting
       </button>
+    </section>
+  );
+};
 
-    </section >
-  )
-}
-
-export default SideBar
+export default SideBar;
