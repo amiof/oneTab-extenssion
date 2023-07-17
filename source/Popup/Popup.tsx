@@ -4,6 +4,10 @@ import AllUrls from './components/AllUrls';
 import SideBar from './components/Sidebar';
 import './styles.scss';
 import Register from './components/Register';
+import OpenUrls from './components/OpenUrls';
+import AddTag from './components/AddTag';
+import FavUrls from './components/FavUrls';
+import SearchUrl from './components/Searchurl';
 
 const Popup: React.FC = () => {
   const [Click, setClick] = React.useState<string>('notClicked');
@@ -24,6 +28,10 @@ const Popup: React.FC = () => {
         {Click == 'login' ? <Login /> : null}
         {Click == 'register' ? <Register /> : null}
         {Click == 'urls' || Click == 'notClicked' ? <AllUrls /> : null}
+        {Click == 'openUrls'  ? <OpenUrls/> : null}
+        {Click == 'addTag'  ? <AddTag /> : null}
+        {Click == 'favUrls'  ? <FavUrls /> : null}
+        {Click == 'searchUrl'  ? <SearchUrl /> : null}
       </div>
     </div>
   );
