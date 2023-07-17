@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './scss/allUrls.scss';
+import UrlCard from './UrlCard';
 
 export type Tuser = {
   id: string;
@@ -12,7 +13,7 @@ export type Tuser = {
   JwtToken: string;
 };
 
-type Turls = {
+export type Turls = {
   id: string;
   url: string;
   title: string;
@@ -34,12 +35,13 @@ const AllUrls = () => {
     getDataUrls();
   }, []);
 
-  // console.log("outSide", urls);
+  console.log("outSide", urls[0]);
+
 
   return (
     <>
       {urls.map((url) => (
-        <p key={url.id}>{url.title}</p>
+        <UrlCard key={url.id} {...url}></UrlCard>
       ))}
     </>
   );
