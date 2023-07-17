@@ -48,17 +48,27 @@ display:grid;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  #options__button {
+  .options__button {
     width: fit-content;
     background: green;
     color: white;
     font-weight: 500;
     border-radius: 15px;
     padding: 10px 15px;
+    width: 80%;
     justify-content: center;
     margin: 5px ;
     cursor: pointer;
     opacity: 0.8;
   }
-  
+
+  .options__button:hover {
+  background: red; 
+  color: yellow;
+  }
+
+  .options__button:focus{
+  color: white;
+  background: red; 
+  }
 }

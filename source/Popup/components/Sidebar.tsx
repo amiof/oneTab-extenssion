@@ -14,25 +14,16 @@ const SideBar = ({ setClick }: Props) => {
   return (
     <section id="sideBarContent">
       <button
-        id="options__button"
-        type="button"
-        onClick={() => {
-          setClick("register");
-        }}
-      >
-        Register
-      </button>
-      <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={() => {
           setClick("login");
         }}
       >
-        Login
+        signIn/Up
       </button>
       <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={() => {
           setClick("urls");
@@ -42,7 +33,7 @@ const SideBar = ({ setClick }: Props) => {
       </button>
 
       <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={() => {
           setClick("openUrls");
@@ -52,7 +43,7 @@ const SideBar = ({ setClick }: Props) => {
       </button>
 
       <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={() => {
           setClick("addTag");
@@ -62,7 +53,7 @@ const SideBar = ({ setClick }: Props) => {
       </button>
 
       <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={() => {
           setClick("favUrls");
@@ -72,7 +63,7 @@ const SideBar = ({ setClick }: Props) => {
       </button>
 
       <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={() => {
           setClick("searchUrl");
@@ -81,7 +72,7 @@ const SideBar = ({ setClick }: Props) => {
         searchUrl
       </button>
       <button
-        id="options__button"
+        className="options__button"
         type="button"
         onClick={(): Promise<Tabs.Tab> => {
           return openWebPage("options.html");

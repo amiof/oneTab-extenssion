@@ -3,7 +3,6 @@ import Login from './components/Login';
 import AllUrls from './components/AllUrls';
 import SideBar from './components/Sidebar';
 import './styles.scss';
-import Register from './components/Register';
 import OpenUrls from './components/OpenUrls';
 import AddTag from './components/AddTag';
 import FavUrls from './components/FavUrls';
@@ -26,7 +25,6 @@ const Popup: React.FC = () => {
       </div>
       <div className="content">
         {Click == 'login' ? <Login /> : null}
-        {Click == 'register' ? <Register /> : null}
         {Click == 'urls' || Click == 'notClicked' ? <AllUrls /> : null}
         {Click == 'openUrls'  ? <OpenUrls/> : null}
         {Click == 'addTag'  ? <AddTag /> : null}
