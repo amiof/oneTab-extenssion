@@ -2,23 +2,21 @@ import * as React from 'react';
 import './scss/Login.scss';
 // import {Tuser}from "./AllUrls"
 const Login = () => {
-  const [userName, setUserName] = React.useState<string | undefined>();
-  const [password, setPassword] = React.useState<string | undefined>();
+  const [userName, setUserName] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
 
   function sendDataLogin() {
     fetch('http://localhost:3000/auth/login', {
       method: 'POST',
-      headers: {
-        'Cotent-Type': 'application/json',
-      },
+      headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
-        userName,
-        password,
+        userName: userName,
+        password: password,
       }),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   }
   console.log(userName, password);
   return (
