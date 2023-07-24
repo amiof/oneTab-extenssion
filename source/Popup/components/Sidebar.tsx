@@ -2,6 +2,7 @@ import * as React from "react";
 import { browser, Tabs } from "webextension-polyfill-ts";
 
 import "../styles.scss";
+import { Tuser } from "./AllUrls";
 
 function openWebPage(url: string): Promise<Tabs.Tab> {
   return browser.tabs.create({ url });
@@ -9,19 +10,34 @@ function openWebPage(url: string): Promise<Tabs.Tab> {
 
 interface Props {
   setClick: React.Dispatch<React.SetStateAction<string>>;
+  userData:Tuser | undefined
 }
-const SideBar = ({ setClick }: Props) => {
+
+const SideBar = ({ setClick,userData }: Props) => {
+
   return (
     <section id="sideBarContent">
-      <button
-        className="options__button"
-        type="button"
-        onClick={() => {
-          setClick("login");
-        }}
-      >
-        signIn/Up
-      </button>
+      {!userData?.id ? (
+        <button
+          className="options__button"
+          type="button"
+          onClick={() => {
+            setClick("login");
+          }}
+        >
+          signIn/Up
+        </button>
+      ) : (
+        <button
+          className="options__button"
+          type="button"
+          onClick={() => {
+            setClick("logOut");
+          }}
+        >
+          logOut
+        </button>
+      )}
       <button
         className="options__button"
         type="button"

@@ -2,17 +2,20 @@ import * as React from "react";
 import "./scss/Login.scss";
 import { Tuser } from "./AllUrls";
 import Register from "./Register";
-const Login = () => {
+import { browser } from "webextension-polyfill-ts";
+type propsLogin = {
+  login: boolean;
+  setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const Login = ({ login, setLogin }: propsLogin) => {
   const [userName, setUserName] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const [userData, setUserData] = React.useState<Tuser | undefined>();
   const [GotoRegister, setGotoRegister] = React.useState<boolean>(false);
-
-  const RegisterGo={
+  const RegisterGo = {
     GotoRegister,
-    setGotoRegister
-
-  }
+    setGotoRegister,
+  };
 
   function sendDataLogin() {
     fetch("http://localhost:3000/auth/login", {
@@ -27,6 +30,10 @@ const Login = () => {
       .then((data) => setUserData(data))
       .catch((error) => console.log(error.message));
   }
+  React.useEffect(() => {
+    const storage = browser.storage.local.set({ userData });
+    storage.then(() => setLogin(!login));
+  }, [userData]);
 
   console.log(userName, password);
   console.log("userData", userData);
