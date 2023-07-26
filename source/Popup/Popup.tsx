@@ -12,7 +12,6 @@ import { browser } from "webextension-polyfill-ts";
 const Popup: React.FC = () => {
   const [userData, setUserData] = React.useState<Tuser>();
   const [Click, setClick] = React.useState<string>("notClicked");
-  const [login, setLogin] = React.useState<boolean>(false);
 
 
   React.useEffect(() => {
@@ -24,7 +23,8 @@ const Popup: React.FC = () => {
     setClick,
     userData,
   };
-  const loginProp = { login, setLogin };
+  const loginProp = { setClick };
+
 
   return (
     <div className="container">
@@ -36,8 +36,8 @@ const Popup: React.FC = () => {
           <SideBar {...urlProps} />
         </div>
         <div className="content">
-          {Click == "login" && !userData?.id ? <Login {...loginProp} /> :null}
-          {Click == "logOut" && userData?.id ? <LogOut /> : null}
+          {Click == "login" ? <Login {...loginProp} /> :null}
+          {Click == "logOut" ? <LogOut /> : null}
           {Click == "urls" || Click == "notClicked" ? <AllUrls /> : null}
           {Click == "openUrls" ? <OpenUrls /> : null}
           {Click == "addTag" ? <AddTag /> : null}
