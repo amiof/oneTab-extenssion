@@ -3,6 +3,7 @@ import "./scss/Login.scss";
 import { Tuser } from "./AllUrls";
 import Register from "./Register";
 import { browser } from "webextension-polyfill-ts";
+import { Button } from "@mui/material";
 type propsLogin = {
   setClick: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -37,7 +38,7 @@ const Login = ({ setClick }: propsLogin) => {
     // storage.then(()=>setClick("logOut"))
     if (userData?.id) {
       logOut();
-      console.log("i ami in if ")
+      console.log("i ami in if ");
     }
   }, [userData]);
 
@@ -71,15 +72,15 @@ const Login = ({ setClick }: propsLogin) => {
                 />
               </div>
               <div className="buttons">
-                <button className="loginButton" onClick={sendDataLogin}>
+                <Button className="loginButton" onClick={sendDataLogin}>
                   login
-                </button>
-                <button
+                </Button>
+                <Button
                   className="RegisterButton"
                   onClick={() => setGotoRegister(!GotoRegister)}
                 >
                   Register
-                </button>
+                </Button>
               </div>
             </div>
           </div>

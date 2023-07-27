@@ -113,7 +113,7 @@ const SideBar = ({ setClick, userData }: Props) => {
           setClick("searchUrl");
         }}
       >
-        searchUrl
+        search
       </Button>
       <Button
         className="options__button"

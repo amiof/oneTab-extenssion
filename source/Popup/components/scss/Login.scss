@@ -43,7 +43,7 @@ height: 100%;
       color: black;
       font-size: 18px;
     }
-    
+  //   
   }
 
   .buttons{
@@ -55,21 +55,25 @@ height: 100%;
   .loginButton{
     background: red;
     color: white;
-    padding: 5px 10px;
+    // padding: 5px 10px;
     margin: 0px 10px;
-    border-radius: 10px;
-    width: 70px;
-    cursor: pointer;
+    // border-radius: 10px;
+    // width: 70px;
+    // cursor: pointer;
   }
 .RegisterButton{
 
     background: blue;
     color: white;
-    padding: 5px 10px;
-    margin: 0px 10px;
-    border-radius: 10px;
-    width: 70px;
-    cursor: pointer;
+    // padding: 5px 10px;
+    // margin: 0px 10px;
+    // border-radius: 10px;
+    // width: 70px;
+    // cursor: pointer;
+  }
+  Button:hover{
+  background: green;
+
   }
 
 }
