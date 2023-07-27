@@ -4,7 +4,10 @@ import "./scss/urlCard.scss";
 import { BiShowAlt } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
-const UrlCard = ({ id, url, title }: Turls) => {
+import { browser } from "webextension-polyfill-ts";
+
+type partialTurls=Partial<Turls>
+const UrlCard = ({ id, url, title }: partialTurls) => {
   const [more, setMore] = useState<boolean>(false);
   console.log(id);
   return (
@@ -15,6 +18,19 @@ const UrlCard = ({ id, url, title }: Turls) => {
             <p>{title}</p>
             <p className={!more ? "hidden" : ""}>{url}</p>
           </div>
+          <p
+            onClick={(): Promise<void> => {
+              return browser.tabs
+                .query({pinned:false })
+                .then((tabs) => {
+                  // const activeTab = tabs[0];
+                  // return browser.tabs.create({ url: activeTab.url });
+                  console.log(tabs)
+                });
+            }}
+          >
+            open
+          </p>
         </div>
       </div>
       <div id="ButtonContainer">

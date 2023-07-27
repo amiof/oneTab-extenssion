@@ -39,7 +39,11 @@
 }
 #ButtonContainer{
   .icons{
-margin: 5px 7px;
+margin: 5px 5px;
+    cursor: pointer;
+  }
+  .icons:hover{
+    color:green !important
   }
 }
 #record{

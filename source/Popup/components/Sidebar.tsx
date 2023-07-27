@@ -4,7 +4,7 @@ import { browser, Tabs } from "webextension-polyfill-ts";
 import "../styles.scss";
 import { Tuser } from "./AllUrls";
 
-function openWebPage(url: string): Promise<Tabs.Tab> {
+export function openWebPage(url: string): Promise<Tabs.Tab> {
   return browser.tabs.create({ url });
 }
 
