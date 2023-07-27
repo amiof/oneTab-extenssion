@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import * as React from "react";
 import { browser, Tabs } from "webextension-polyfill-ts";
 
@@ -10,15 +11,18 @@ export function openWebPage(url: string): Promise<Tabs.Tab> {
 
 interface Props {
   setClick: React.Dispatch<React.SetStateAction<string>>;
-  userData:Tuser | undefined
+  userData: Tuser | undefined;
 }
 
-const SideBar = ({ setClick,userData }: Props) => {
-
+const SideBar = ({ setClick, userData }: Props) => {
   return (
     <section id="sideBarContent">
       {!userData?.id ? (
-        <button
+        <Button
+          variant="outlined"
+          color="success"
+          size="small"
+          sx={{ marginY: "15px", Width: "80%" }}
           className="options__button"
           type="button"
           onClick={() => {
@@ -26,76 +30,104 @@ const SideBar = ({ setClick,userData }: Props) => {
           }}
         >
           signIn/Up
-        </button>
+        </Button>
       ) : (
-        <button
+        <Button
           className="options__button"
+          variant="outlined"
+          color="success"
+          size="small"
+          sx={{ marginY: "15px", Width: "80%" }}
           type="button"
           onClick={() => {
             setClick("logOut");
           }}
         >
           logOut
-        </button>
+        </Button>
       )}
-      <button
+      <Button
         className="options__button"
+        variant="outlined"
+        color="success"
+        size="small"
+        sx={{ marginY: "15px" }}
         type="button"
         onClick={() => {
           setClick("urls");
         }}
       >
         Urls
-      </button>
+      </Button>
 
-      <button
+      <Button
         className="options__button"
+        variant="outlined"
+        color="success"
+        size="small"
+        sx={{ marginY: "15px", Width: "80%" }}
         type="button"
         onClick={() => {
           setClick("openUrls");
         }}
       >
         oepnUrls
-      </button>
+      </Button>
 
-      <button
+      <Button
         className="options__button"
+        variant="outlined"
+        color="success"
+        size="small"
+        sx={{ marginY: "15px", minWidth: "80%" }}
         type="button"
         onClick={() => {
           setClick("addTag");
         }}
       >
         addTag
-      </button>
+      </Button>
 
-      <button
+      <Button
         className="options__button"
+        variant="outlined"
+        color="success"
+        size="small"
+        sx={{ marginY: "15px", minWidth: "80%" }}
         type="button"
         onClick={() => {
           setClick("favUrls");
         }}
       >
         favUrls
-      </button>
+      </Button>
 
-      <button
+      <Button
         className="options__button"
+        variant="outlined"
+        color="success"
+        size="small"
+        sx={{ marginY: "15px", minWidth: "80%" }}
         type="button"
         onClick={() => {
           setClick("searchUrl");
         }}
       >
         searchUrl
-      </button>
-      <button
+      </Button>
+      <Button
         className="options__button"
+        variant="outlined"
+        color="success"
+        size="small"
+        sx={{ marginY: "15px", minWidth: "80%" }}
         type="button"
         onClick={(): Promise<Tabs.Tab> => {
           return openWebPage("options.html");
         }}
       >
         setting
-      </button>
+      </Button>
     </section>
   );
 };
