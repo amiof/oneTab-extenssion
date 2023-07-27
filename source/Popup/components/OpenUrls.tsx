@@ -47,7 +47,7 @@ const OpenUrls = () => {
 
   return (
     <div>
-      {tabData.map((tab: TabData) => <UrlCard {...{id:String(tab.id),url:tab.url,title:tab.title}}/>)}
+      {tabData.map((tab: TabData) => <UrlCard {...{id:String(tab.id),url:tab.url,title:tab.title,favIconUrl:tab.favIconUrl}}/>)}
     </div>
   );
 };
