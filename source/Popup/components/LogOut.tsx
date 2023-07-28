@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, makeStyles, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { browser } from "webextension-polyfill-ts";
@@ -26,8 +26,8 @@ const LogOut = () => {
             <Typography variant="h5">`your urls is  `{userData?.first_name}</Typography>
           </CardContent>
 
-          <CardActions>
-            <Button variant="contained" size="small" sx={{ ":hover": { backgroundColor: "red" } }} onClick={clickHandler}>
+          <CardActions sx={{backgroundColor:"#171616" }}>
+            <Button variant="contained" size="small" sx={{ ":hover": { backgroundColor: "red" }, margin:"auto"}} onClick={clickHandler}>
               logout
             </Button>
           </CardActions>
