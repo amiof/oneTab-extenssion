@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import './scss/allUrls.scss';
-import UrlCard from './UrlCard';
+import { CircularProgress } from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useState, useEffect } from "react";
+import "./scss/allUrls.scss";
+import UrlCard from "./UrlCard";
 
 export type Tuser = {
   id: string;
@@ -24,7 +26,7 @@ const AllUrls = () => {
   const [urls, setUrls] = useState<Turls[]>([]);
 
   function getDataUrls() {
-    return fetch('http://localhost:3000/urls')
+    return fetch("http://localhost:3000/urls")
       .then((res) => res.json())
       .then((data) => {
         setUrls(data);
@@ -37,12 +39,22 @@ const AllUrls = () => {
 
   console.log("outSide", urls[0]);
 
-
   return (
     <>
-      {urls.map((url) => (
-        <UrlCard key={url.id} {...url}></UrlCard>
-      ))}
+      {urls[0]?.id ? (
+        urls.map((url) => <UrlCard key={url.id} {...url}></UrlCard>)
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+              marginY:"30%"
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
     </>
   );
 };
