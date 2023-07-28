@@ -1,58 +1,57 @@
-@import "../../../styles/fonts"; 
-@import "../../../styles/reset"; 
-@import "../../../styles/variables"; 
+@import "../../../styles/fonts";
+@import "../../../styles/reset";
+@import "../../../styles/variables";
 
-.Login{
-color:white;
-width: 100%;
-height: 100%;
+.Login {
+  color: white;
+  width: 100%;
+  height: 100%;
   margin: auto;
-  display: flex; 
+  margin-top: 60px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  #container{
+  #container {
     border: 1px solid gray;
     border-radius: 25px;
     width: 300px;
     min-height: 400px;
-    #Div{
+    #Div {
       display: flex;
-        justify-content: center;
+      justify-content: center;
       align-items: center;
       flex-direction: column;
     }
   }
 
-  h2{
+  h2 {
     font-size: 24px;
     text-align: center;
-    color:red;
+    color: red;
     padding-top: 40px;
-
-
   }
-  .Input{
+  .Input {
     margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    input{
+    input {
       padding: 5px;
       border-radius: 10px;
       background-color: gray;
       color: black;
       font-size: 18px;
     }
-  //   
+    //
   }
 
-  .buttons{
+  .buttons {
     display: flex;
-    margin : 40px 10px;
+    margin: 40px 10px;
     justify-content: center;
     align-items: center;
   }
-  .loginButton{
+  .loginButton {
     background: red;
     color: white;
     // padding: 5px 10px;
@@ -61,8 +60,7 @@ height: 100%;
     // width: 70px;
     // cursor: pointer;
   }
-.RegisterButton{
-
+  .RegisterButton {
     background: blue;
     color: white;
     // padding: 5px 10px;
@@ -71,10 +69,7 @@ height: 100%;
     // width: 70px;
     // cursor: pointer;
   }
-  Button:hover{
-  background: green;
-
+  Button:hover {
+    background: green;
   }
-
 }
-

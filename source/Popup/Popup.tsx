@@ -9,11 +9,11 @@ import FavUrls from "./components/FavUrls";
 import SearchUrl from "./components/Searchurl";
 import LogOut from "./components/LogOut";
 import { browser } from "webextension-polyfill-ts";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 const Popup: React.FC = () => {
   const [userData, setUserData] = React.useState<Tuser>();
   const [Click, setClick] = React.useState<string>("notClicked");
-
-
+  const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
   React.useEffect(() => {
     const storage = browser.storage.local.get("userData");
     storage.then((data) => setUserData(data.userData));
@@ -22,28 +22,34 @@ const Popup: React.FC = () => {
   const urlProps = {
     setClick,
     userData,
+    openDrawer,
+    setOpenDrawer
   };
   const loginProp = { setClick };
 
-
   return (
     <div className="container">
-        <div className="title">
-          <h2>ONE-Tab</h2>
-          <div className="divider" />
-        </div>
-        <div className="popUp">
-          <SideBar {...urlProps} />
-        </div>
-        <div className="content">
-          {Click == "login" ? <Login {...loginProp} /> :null}
-          {Click == "logOut" ? <LogOut /> : null}
-          {Click == "urls" || Click == "notClicked" ? <AllUrls /> : null}
-          {Click == "openUrls" ? <OpenUrls /> : null}
-          {Click == "addTag" ? <AddTag /> : null}
-          {Click == "favUrls" ? <FavUrls /> : null}
-          {Click == "searchUrl" ? <SearchUrl /> : null}
-        </div>
+      <div id="title">
+        <AppBar sx={{background:"#171616"}} position="static" enableColorOnDark={true} >
+        <Toolbar variant="regular">
+        <Button variant="outlined" size="small" onClick={()=>setOpenDrawer(!openDrawer)}>option</Button>
+            <Typography variant="h6" sx={{margin:"auto"}}>ONE-TAB</Typography>
+        </Toolbar>
+        </AppBar>
+      </div>
+      <div className="divider" />
+      <div className="popUp">
+        <SideBar {...urlProps} />
+      </div>
+      <div className="content">
+        {Click == "login" ? <Login {...loginProp} /> : null}
+        {Click == "logOut" ? <LogOut /> : null}
+        {Click == "urls" || Click == "notClicked" ? <AllUrls /> : null}
+        {Click == "openUrls" ? <OpenUrls /> : null}
+        {Click == "addTag" ? <AddTag /> : null}
+        {Click == "favUrls" ? <FavUrls /> : null}
+        {Click == "searchUrl" ? <SearchUrl /> : null}
+      </div>
     </div>
   );
 };

@@ -9,37 +9,37 @@ body {
 .popUp{
   margin:10px 10px ;
 }
-.divider{
-  border-bottom: 1px solid white;
-  width:500px;
-  margin:auto;
-  height: 1px;
-  }
+// .divider{
+//   border-bottom: 1px solid white;
+//   width:500px;
+//   margin:auto;
+//   height: 1px;
+//   }
 .container{
 width: 550px;
 height: 600px;
-  margin:auto;
-display:grid;
-  grid-gap:5px;
-  grid-template-columns: repeat(8,1fr);
-  grid-template-rows: repeat(12,1fr);
+  // margin:auto;
+// display:grid;
+  // grid-gap:5px;
+  // grid-template-columns: repeat(8,1fr);
+  // grid-template-rows: repeat(12,1fr);
 .content{
     width: full;
     height: full;
-    grid-column:2/9;
-    grid-row:2/13
+    // grid-column:2/9;
+    // grid-row:2/13
   }
 }
-.title {
-    font-size: 25px;
-    text-align: center;
-    grid-column:1/9;
-   grid-row:1;
+// .title {
+    // font-size: 25px;
+    // text-align: center;
+    // grid-column:1/9;
+   // grid-row:1;
   
-  }
-  .divider{
-    border-bottom: 1px solid gray;
-  }
+  // }
+  // .divider{
+    // border-bottom: 1px solid gray;
+  // }
 #sideBarContent {
   min-width: fit-content;
   border-right: 1px solid gray;
