@@ -20,7 +20,7 @@ interface Props {
 const SideBar = ({ setClick, userData ,openDrawer,setOpenDrawer}: Props) => {
   return (
     <div>
-      <Drawer
+      <Drawer 
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         sx={{
@@ -33,6 +33,7 @@ const SideBar = ({ setClick, userData ,openDrawer,setOpenDrawer}: Props) => {
         PaperProps={{
           style: {
             backgroundColor: "#171616", // set the background color here as well
+            width:"30%"
           },
         }}
       >
