@@ -3,7 +3,7 @@ import { browser } from "webextension-polyfill-ts";
 import UrlCard from "./UrlCard";
 
 interface TabData {
-  id: number | null;
+  tabId: number | number[] ;
   url: string;
   favIconUrl: string;
   title: string;
@@ -13,15 +13,15 @@ interface TabData {
 async function openUrls(): Promise<TabData[]> {
   const tabs = await browser.tabs.query({ pinned: false });
 
+  // console.log(JSON.stringify(tabs[0]))
   const tabsData: TabData[] = tabs.map((tab) => ({
-    id: tab.id || null,
+    tabId: tab.id || 0 ,
     url: tab.url || "",
     favIconUrl: tab.favIconUrl || "",
     status: tab.status || "",
     title: tab.title || ""
   }));
 
-  console.log(tabsData);
   return tabsData;
 }
 
@@ -41,13 +41,13 @@ const OpenUrls = () => {
     const storage = browser.storage.local.get("userdata");
 
     storage.then((data) => {
-      console.log(data.userdata);
+      console.log("userData-openurl",data.userdata);
     });
   }, []);
 
   return (
     <div>
-      {tabData.map((tab: TabData) => <UrlCard {...{id:String(tab.id),url:tab.url,title:tab.title,favIconUrl:tab.favIconUrl}}/>)}
+      {tabData.map((tab: TabData) => <UrlCard {...{tabId:tab.tabId,url:tab.url,title:tab.title,favIconUrl:tab.favIconUrl}}/>)}
     </div>
   );
 };

@@ -12,6 +12,7 @@ import {
   CardActionArea,
   CardActions,
 } from "@mui/material";
+import { browser } from "webextension-polyfill-ts";
 
 //FIXME: favicon is not show in card url
 //
@@ -21,10 +22,14 @@ type partialTurls = Partial<Turls> & {
   fromComponent?: string;
   status?: string;
   favIconUrl?: string;
+  tabId?: number | number[];
 };
-const UrlCard = ({ id, url, title }: partialTurls) => {
-  console.log(id);
-
+const UrlCard = ({ tabId, url, title }: partialTurls) => {
+  const removeTab = () => {
+    if (tabId) {
+      browser.tabs.remove(tabId);
+    }
+  };
   // Use the useEffect() hook to fetch the image and create a URL for it
 
   return (
@@ -42,26 +47,26 @@ const UrlCard = ({ id, url, title }: partialTurls) => {
         <AccordionDetails>{url}</AccordionDetails>
         <CardActionArea>
           <CardActions>
-            <Button variant="outlined" color="error">
-              <AiFillDelete className="icons" color="red" onClick={() => { }} />
+            <Button variant="outlined" color="error" onClick={() =>removeTab()} >
+              <AiFillDelete className="icons" color="red" />
             </Button>
             <Button variant="outlined" color="primary">
               <AiOutlineStar
                 className="icons"
                 color="yellow"
-                onClick={() => { }}
+                onClick={() => {}}
               />
             </Button>
             <Button variant="outlined" color="secondary">
-              <BiShowAlt className="icons" color="green" onClick={() => { }} />
+              <BiShowAlt className="icons" color="green" onClick={() => {}} />
             </Button>
           </CardActions>
         </CardActionArea>
       </Accordion>
       <div id="ButtonContainer">
-        <BiShowAlt className="icons" color="green" onClick={() => { }} />
-        <AiFillDelete className="icons" color="red" onClick={() => { }} />
-        <AiOutlineStar className="icons" color="yellow" onClick={() => { }} />
+        <BiShowAlt className="icons" color="green" onClick={() => {}} />
+        <AiFillDelete className="icons" color="red" onClick={() =>removeTab() } />
+        <AiOutlineStar className="icons" color="yellow" onClick={() => {}} />
       </div>
     </div>
   );
