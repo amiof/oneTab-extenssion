@@ -2,7 +2,11 @@
 import React from 'react';
 
 const AddTag = () => {
-  return <div>addTag</div>;
-};
+  return (
+    <div>
+      add Tag
+    </div>
+  )
+}
 
-export default AddTag ;
+export default AddTag 

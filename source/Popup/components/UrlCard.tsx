@@ -13,6 +13,7 @@ import {
   CardActions,
 } from "@mui/material";
 import { browser } from "webextension-polyfill-ts";
+import Favicon from "./favicon";
 
 //FIXME: favicon is not show in card url
 //
@@ -24,7 +25,7 @@ type partialTurls = Partial<Turls> & {
   favIconUrl?: string;
   tabId?: number | number[];
 };
-const UrlCard = ({ tabId, url, title }: partialTurls) => {
+const UrlCard = ({ tabId, url, title , favIconUrl}: partialTurls) => {
   const removeTab = () => {
     if (tabId) {
       browser.tabs.remove(tabId);
@@ -43,11 +44,17 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
           border: "1px solid gray",
         }}
       >
-        <AccordionSummary>{title}</AccordionSummary>
+        <AccordionSummary>
+        {url ? <Favicon urls={{url,favIconUrls:favIconUrl}}></Favicon> : null}
+          {title}</AccordionSummary>
         <AccordionDetails>{url}</AccordionDetails>
         <CardActionArea>
           <CardActions>
-            <Button variant="outlined" color="error" onClick={() =>removeTab()} >
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => removeTab()}
+            >
               <AiFillDelete className="icons" color="red" />
             </Button>
             <Button variant="outlined" color="primary">
@@ -65,7 +72,11 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
       </Accordion>
       <div id="ButtonContainer">
         <BiShowAlt className="icons" color="green" onClick={() => {}} />
-        <AiFillDelete className="icons" color="red" onClick={() =>removeTab() } />
+        <AiFillDelete
+          className="icons"
+          color="red"
+          onClick={() => removeTab()}
+        />
         <AiOutlineStar className="icons" color="yellow" onClick={() => {}} />
       </div>
     </div>
