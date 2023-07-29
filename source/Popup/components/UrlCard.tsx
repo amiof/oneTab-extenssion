@@ -15,7 +15,7 @@ import {
 import { browser } from "webextension-polyfill-ts";
 import Favicon from "./favicon";
 
-//FIXME: favicon is not show in card url
+//FIXME: favicon is not show in card url and it is blured
 //
 //
 //
