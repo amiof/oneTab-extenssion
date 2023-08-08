@@ -49,7 +49,7 @@ const AllUrls = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-              marginY:"30%"
+            marginY: "30%"
           }}
         >
           <CircularProgress />
