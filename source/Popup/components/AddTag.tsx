@@ -9,7 +9,6 @@ const AddTag = () => {
   const [tagName, setTagName] = useState<string>("");
   const [tags, setTags] = useState<tagRes[]>([]);
   const [remvoed, setRemoved] = useState<string>("")
-  // const [checkName, setCheckName] = useState<boolean>(true)
   type tagRes = {
     id: string;
     TagName: string;
@@ -18,7 +17,10 @@ const AddTag = () => {
   const getTags = () => {
     fetch("http://localhost:3000/tag/usertag", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        // "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email: "ali7@gmai.com" }),
     })
       .then((res) => res.json())
@@ -34,7 +36,7 @@ const AddTag = () => {
   const addTag =async () => {
      const exist =checkTag()
     if (!exist) {
-      console.log("im in fetch add")
+      // console.log("im in fetch add")
       fetch("http://localhost:3000/tag", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -46,8 +48,15 @@ const AddTag = () => {
         // .then(data => console.log(data))
         .catch(error => console.log(error))
     } else {
-      console.log("i am in toast")
-      toast.error("this tagName available add other name")
+      // console.log("i am in toast")
+      toast.error("this tagName available add other name",  {
+    // icon: '👏',
+    style: {
+      borderRadius: '10px',
+      background: '#333',
+      color: '#fff',
+    },
+  })
     }
     getTags();
   };
