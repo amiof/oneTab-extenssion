@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import TagCard from "./tagCard";
+import { toast, Toaster } from "react-hot-toast";
 
 const AddTag = () => {
   const [tagName, setTagName] = useState<string>("");
   const [tags, setTags] = useState<tagRes[]>([]);
   const [remvoed, setRemoved] = useState<string>("")
+  // const [checkName, setCheckName] = useState<boolean>(true)
   type tagRes = {
     id: string;
     TagName: string;
@@ -21,22 +23,32 @@ const AddTag = () => {
     })
       .then((res) => res.json())
       .then((data) => setTags(data))
-      .then(() => console.log(tags))
+    // .then(() => console.log(tags))
   };
+  const checkTag = () => {
+    const tagExist = tags.some((tag) => tag.TagName == tagName)
+    return tagExist
+  }
 
 
-  const addTag = () => {
-    fetch("http://localhost:3000/tag", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        TagName: tagName,
-        email: "ali7@gmai.com",
-      })
-
-    }).then(res => res.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error))
+  const addTag =async () => {
+     const exist =checkTag()
+    if (!exist) {
+      console.log("im in fetch add")
+      fetch("http://localhost:3000/tag", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          TagName: tagName,
+          email: "ali7@gmai.com",
+        })
+      }).then(res => res.json())
+        // .then(data => console.log(data))
+        .catch(error => console.log(error))
+    } else {
+      console.log("i am in toast")
+      toast.error("this tagName available add other name")
+    }
     getTags();
   };
   useEffect(() => {
@@ -72,10 +84,11 @@ const AddTag = () => {
           placeholder="type your tagName"
         />
       </Toolbar>
-      <Box sx={{ display: "flex", flex: "auto",flexWrap:"wrap" }}>
-        {tags.map((tag) => <TagCard key={tag.id} TagName={tag.TagName} TagId={tag.id} setRemoved={setRemoved}/>)}
+      <Box sx={{ display: "flex", flex: "auto", flexWrap: "wrap" }}>
+        {tags.map((tag) => <TagCard key={tag.id} TagName={tag.TagName} TagId={tag.id} setRemoved={setRemoved} />)}
 
       </Box>
+      <Toaster />
     </div>
   );
 };
