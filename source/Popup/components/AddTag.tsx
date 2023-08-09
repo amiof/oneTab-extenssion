@@ -8,7 +8,7 @@ import { toast, Toaster } from "react-hot-toast";
 const AddTag = () => {
   const [tagName, setTagName] = useState<string>("");
   const [tags, setTags] = useState<tagRes[]>([]);
-  const [remvoed, setRemoved] = useState<string>("")
+  const [remvoed, setRemoved] = useState<string>("");
   type tagRes = {
     id: string;
     TagName: string;
@@ -24,39 +24,42 @@ const AddTag = () => {
       body: JSON.stringify({ email: "ali7@gmai.com" }),
     })
       .then((res) => res.json())
-      .then((data) => setTags(data))
+      .then((data) => setTags(data));
     // .then(() => console.log(tags))
   };
   const checkTag = () => {
-    const tagExist = tags.some((tag) => tag.TagName == tagName)
-    return tagExist
-  }
+    const tagExist = tags.some((tag) => tag.TagName == tagName);
+    return tagExist;
+  };
 
-
-  const addTag =async () => {
-     const exist =checkTag()
+  const addTag = async () => {
+    const exist = checkTag();
     if (!exist) {
       // console.log("im in fetch add")
       fetch("http://localhost:3000/tag", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          // "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           TagName: tagName,
           email: "ali7@gmai.com",
-        })
-      }).then(res => res.json())
+        }),
+      })
+        .then((res) => res.json())
         // .then(data => console.log(data))
-        .catch(error => console.log(error))
+        .catch((error) => console.log(error));
     } else {
       // console.log("i am in toast")
-      toast.error("this tagName available add other name",  {
-    // icon: '👏',
-    style: {
-      borderRadius: '10px',
-      background: '#333',
-      color: '#fff',
-    },
-  })
+      toast.error("this tagName available add other name", {
+        // icon: '👏',
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
     getTags();
   };
@@ -84,7 +87,9 @@ const AddTag = () => {
             <Button
               variant="contained"
               sx={{ color: "white" }}
-              onClick={() => { addTag() }}
+              onClick={() => {
+                addTag();
+              }}
             >
               AddTag
             </Button>
@@ -94,8 +99,14 @@ const AddTag = () => {
         />
       </Toolbar>
       <Box sx={{ display: "flex", flex: "auto", flexWrap: "wrap" }}>
-        {tags.map((tag) => <TagCard key={tag.id} TagName={tag.TagName} TagId={tag.id} setRemoved={setRemoved} />)}
-
+        {tags.map((tag) => (
+          <TagCard
+            key={tag.id}
+            TagName={tag.TagName}
+            TagId={tag.id}
+            setRemoved={setRemoved}
+          />
+        ))}
       </Box>
       <Toaster />
     </div>
