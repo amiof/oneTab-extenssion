@@ -41,13 +41,18 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
           background: "#201e1e",
           color: "white",
           border: "1px solid gray",
+          borderRadius:"10px"
         }}
       >
         <AccordionSummary>{title}</AccordionSummary>
         <AccordionDetails>{url}</AccordionDetails>
         <CardActionArea>
           <CardActions>
-            <Button variant="outlined" color="error" onClick={() =>removeTab()} >
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => removeTab()}
+            >
               <AiFillDelete className="icons" color="red" />
             </Button>
             <Button variant="outlined" color="primary">
@@ -65,7 +70,11 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
       </Accordion>
       <div id="ButtonContainer">
         <BiShowAlt className="icons" color="green" onClick={() => {}} />
-        <AiFillDelete className="icons" color="red" onClick={() =>removeTab() } />
+        <AiFillDelete
+          className="icons"
+          color="red"
+          onClick={() => removeTab()}
+        />
         <AiOutlineStar className="icons" color="yellow" onClick={() => {}} />
       </div>
     </div>
