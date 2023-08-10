@@ -31,7 +31,20 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
     }
   };
   // Use the useEffect() hook to fetch the image and create a URL for it
+  const openurl = (url: string) => {
+    if (tabId) {
+      tabSwitch()
+    } else {
+       browser.tabs.create({ url: url })
+    }
+  }
 
+  const tabSwitch = () => {
+    if (tabId) {
+      if (Array.isArray(tabId)) return
+      browser.tabs.update(tabId, { active: true });
+    }
+  };
   return (
     <div id="record">
       <Accordion
@@ -41,7 +54,7 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
           background: "#201e1e",
           color: "white",
           border: "1px solid gray",
-          borderRadius:"10px"
+          borderRadius: "10px"
         }}
       >
         <AccordionSummary>{title}</AccordionSummary>
@@ -59,23 +72,23 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
               <AiOutlineStar
                 className="icons"
                 color="yellow"
-                onClick={() => {}}
+                onClick={() => { }}
               />
             </Button>
             <Button variant="outlined" color="secondary">
-              <BiShowAlt className="icons" color="green" onClick={() => {}} />
+              <BiShowAlt className="icons" color="green" onClick={() => { url && openurl(url) }} />
             </Button>
           </CardActions>
         </CardActionArea>
       </Accordion>
       <div id="ButtonContainer">
-        <BiShowAlt className="icons" color="green" onClick={() => {}} />
+        <BiShowAlt className="icons" color="green" onClick={() => url && openurl(url)} />
         <AiFillDelete
           className="icons"
           color="red"
           onClick={() => removeTab()}
         />
-        <AiOutlineStar className="icons" color="yellow" onClick={() => {}} />
+        <AiOutlineStar className="icons" color="yellow" onClick={() => { }} />
       </div>
     </div>
   );
