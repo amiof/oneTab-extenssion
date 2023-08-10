@@ -75,8 +75,8 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
                 onClick={() => { }}
               />
             </Button>
-            <Button variant="outlined" color="secondary">
-              <BiShowAlt className="icons" color="green" onClick={() => { url && openurl(url) }} />
+            <Button variant="outlined" color="secondary" onClick={() => { url && openurl(url) }} >
+              <BiShowAlt className="icons" color="green" />
             </Button>
           </CardActions>
         </CardActionArea>

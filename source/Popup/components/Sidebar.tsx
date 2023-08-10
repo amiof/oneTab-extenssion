@@ -92,7 +92,7 @@ const SideBar = ({ setClick, userData ,openDrawer,setOpenDrawer}: Props) => {
               setClick("openUrls");
             }}
           >
-            oepnUrls
+            openTabs
           </Button>
 
           <Button
