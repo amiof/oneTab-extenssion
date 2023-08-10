@@ -47,7 +47,7 @@ const OpenUrls = () => {
     });
   }, []);
 
-    const searchedTab = tabData.filter((tab: TabData) => tab.title.includes(searchTab) || tab.url.includes(searchTab))
+    const searchedTab = tabData.filter((tab: TabData) => tab.title.toLowerCase().includes(searchTab.toLowerCase()) || tab.url.toLowerCase().includes(searchTab.toLowerCase()))
   return (
     <>
       <Toolbar>

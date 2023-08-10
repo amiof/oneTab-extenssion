@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Turls } from "./AllUrls";
 import "./scss/urlCard.scss";
 import { AiFillDelete } from "react-icons/ai";
@@ -25,9 +25,11 @@ type partialTurls = Partial<Turls> & {
   tabId?: number | number[];
 };
 const UrlCard = ({ tabId, url, title }: partialTurls) => {
+  const [removed, setRemoved] = useState<boolean>(false)
   const removeTab = () => {
     if (tabId) {
       browser.tabs.remove(tabId);
+      setRemoved(true)
     }
   };
   // Use the useEffect() hook to fetch the image and create a URL for it
@@ -35,7 +37,7 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
     if (tabId) {
       tabSwitch()
     } else {
-       browser.tabs.create({ url: url })
+      browser.tabs.create({ url: url })
     }
   }
 
@@ -53,9 +55,10 @@ const UrlCard = ({ tabId, url, title }: partialTurls) => {
           marginY: "5px",
           background: "#201e1e",
           color: "white",
-          border: "1px solid gray",
-          borderRadius: "10px"
+          border: removed? "1px solid red":"1px solid gray",
+          borderRadius: "10px",
         }}
+
       >
         <AccordionSummary>{title}</AccordionSummary>
         <AccordionDetails>{url}</AccordionDetails>
