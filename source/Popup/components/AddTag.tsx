@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import TagCard from "./tagCard";
 import { toast, Toaster } from "react-hot-toast";
-
+//FIXME: this a  bug when add tag dont refresh tag content and dont show it a allow add same name tag 
 const AddTag = () => {
   const [tagName, setTagName] = useState<string>("");
   const [tags, setTags] = useState<tagRes[]>([]);
