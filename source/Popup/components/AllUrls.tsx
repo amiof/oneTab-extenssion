@@ -14,12 +14,30 @@ export type Tuser = {
   age: number;
   JwtToken: string;
 };
-
+export type Tfav = {
+  id: string;
+  user?: Tuser;
+};
+export type Ttag = {
+  id: string;
+  TagName: string;
+  CreateAt: Date;
+  user?: Tuser;
+};
+export type Theader = {
+  id: string;
+  headerName: string;
+  CreateAt: Date;
+  user?: Tuser;
+};
 export type Turls = {
   id: string;
   url: string;
   title: string;
   user: Tuser;
+  fav?: Tfav;
+  tag?: Ttag[];
+  header?: Theader[];
   createAt: string;
 };
 const AllUrls = () => {
@@ -49,7 +67,7 @@ const AllUrls = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginY: "30%"
+            marginY: "30%",
           }}
         >
           <CircularProgress />
