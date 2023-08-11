@@ -10,6 +10,7 @@ import SearchUrl from "./components/Searchurl";
 import LogOut from "./components/LogOut";
 import { browser } from "webextension-polyfill-ts";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { Toaster } from "react-hot-toast";
 const Popup: React.FC = () => {
   const [userData, setUserData] = React.useState<Tuser>();
   const [Click, setClick] = React.useState<string>("notClicked");
@@ -44,12 +45,13 @@ const Popup: React.FC = () => {
       <div className="content">
         {Click == "login" ? <Login {...loginProp} /> : null}
         {Click == "logOut" ? <LogOut /> : null}
-        {Click == "urls" || Click == "notClicked" ? <AllUrls /> : null}
-        {Click == "openUrls" ? <OpenUrls /> : null}
+        {Click == "urls"  ? <AllUrls /> : null}
+        {Click == "openUrls" || Click == "notClicked"? <OpenUrls /> : null}
         {Click == "addTag" ? <AddTag /> : null}
         {Click == "favUrls" ? <FavUrls /> : null}
         {Click == "searchUrl" ? <SearchUrl /> : null}
       </div>
+      <Toaster />
     </div>
   );
 };
