@@ -21,7 +21,7 @@ const FavUrls = () => {
     })
       .then((res) => res.json())
       .then((data) => setFavUrls(data))
-      .then(() => console.log(favUrls))
+      // .then(() => console.log(favUrls))
       .catch((error) => console.log(error));
   };
   useEffect(() => {
@@ -69,7 +69,7 @@ const FavUrls = () => {
 
       </Box>
       {searchedFav.map((favUrl) => (
-        <UrlCard id={favUrl.id} title={favUrl.title} url={favUrl.url} />
+        <UrlCard id={favUrl.id} title={favUrl.title} url={favUrl.url} comander="favUrls" fav={{id:favUrl.id}} />
       ))}
     </div>
   );

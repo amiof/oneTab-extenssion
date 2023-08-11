@@ -73,7 +73,7 @@ const OpenUrls = () => {
         />
       </Toolbar>
       <div>
-        {searchedTab.map((tab: TabData) => <UrlCard {...{ tabId: tab.tabId, url: tab.url, title: tab.title, favIconUrl: tab.favIconUrl }} />)}
+        {searchedTab.map((tab: TabData) => <UrlCard {...{ tabId: tab.tabId, url: tab.url, title: tab.title, favIconUrl: tab.favIconUrl , comander:"openTabs" }} />)}
       </div>
 
     </>
