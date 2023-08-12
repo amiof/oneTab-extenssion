@@ -89,7 +89,7 @@ const UrlCard = ({ tabId, url, title, comander, id, fav }: partialTurls) => {
           background: "#201e1e",
           color: "white",
           border: removed ? "1px solid red" : "1px solid gray",
-          borderRadius: "10px",
+          // borderRadius: "10px",
         }}
 
       >
