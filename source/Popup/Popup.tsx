@@ -31,11 +31,11 @@ const Popup: React.FC = () => {
   return (
     <div className="container">
       <div id="title">
-        <AppBar sx={{background:"#171616"}} position="static" enableColorOnDark={true} >
-        <Toolbar variant="regular">
-        <Button variant="outlined" size="small" onClick={()=>setOpenDrawer(!openDrawer)}>option</Button>
-            <Typography variant="h6" sx={{margin:"auto"}}>Infinity-Tab</Typography>
-        </Toolbar>
+        <AppBar sx={{ background: "#171616" }} position="static" enableColorOnDark={true} >
+          <Toolbar variant="regular">
+            <Button variant="outlined" size="small" onClick={() => setOpenDrawer(!openDrawer)}>option</Button>
+            <Typography variant="h6" sx={{ margin: "auto" }}>Infinity-Tab</Typography>
+          </Toolbar>
         </AppBar>
       </div>
       <div className="divider" />
@@ -45,8 +45,8 @@ const Popup: React.FC = () => {
       <div className="content">
         {Click == "login" ? <Login {...loginProp} /> : null}
         {Click == "logOut" ? <LogOut /> : null}
-        {Click == "urls"  ? <AllUrls /> : null}
-        {Click == "openUrls" || Click == "notClicked"? <OpenUrls /> : null}
+        {Click == "urls" ? <AllUrls /> : null}
+        {Click == "openUrls" || Click == "notClicked" ? <OpenUrls /> : null}
         {Click == "addTag" ? <AddTag /> : null}
         {Click == "favUrls" ? <FavUrls /> : null}
         {Click == "searchUrl" ? <SearchUrl /> : null}
