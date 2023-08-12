@@ -44,15 +44,21 @@ const AllUrls = () => {
   const [urls, setUrls] = useState<Turls[]>([]);
   const [colaps, setColaps] = useState<boolean>(false)
   const [headers, setHeaders] = useState<Theader[]>([])
-  const [headerIds, setHeaderId] = useState<string>("")
+  const [headerIds, setHeaderIds] = useState<string>("")
 
 
-  function getDataUrls(): Promise<void> {
-    return fetch("http://localhost:3000/urls")
+  function getDataUrls(headerId: string): Promise<void> {
+    console.log(headerId)
+    return fetch("http://localhost:3000/headers/getHeaderById", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ headerId: headerId }),
+    })
       .then((res) => res.json())
       .then((data) => {
-        setUrls(data);
-      });
+        setUrls(data.urls);
+      })
+    .then((data)=>console.log(data))
   }
 
   function getHeader(): Promise<void> {
@@ -68,17 +74,18 @@ const AllUrls = () => {
   }
 
   useEffect(() => {
-    getDataUrls();
     getHeader()
   }, []);
 
   // console.log("outSide", urls[0]);
   const openSelectedColaps = (headerId: string) => {
-    setHeaderId(headerId)
+    setHeaderIds(headerId)
     setColaps(!colaps)
+    getDataUrls(headerId)
   }
-  const checkOpen=(id:string):boolean|undefined=>{
-   return headerIds==id? !colaps:false
+  const checkOpen = (id: string): boolean | undefined => {
+    return headerIds == id ? !colaps : false
+
   }
 
   return (
@@ -92,15 +99,16 @@ const AllUrls = () => {
         aria-labelledby="nested-list-subheader"
         subheader={
           <ListSubheader component="div" id="nested-list-subheader" sx={{ color: "white", background: "#171616" }}>
-            Nested List Items
+             Headers List
           </ListSubheader>
         }
       >
         {headers.map((header) => <>
           <ListItemButton onClick={() => { openSelectedColaps(header.id) }}>
-            <ListItemText primary={header.headerName} />
+            <ListItemText primary={header.headerName } sx={{fontSize:"bold"}}/>
+            <ListItemText primary={header.CreateAt} sx={{color:"red"}}/>
           </ListItemButton>
-          <Collapse  in={checkOpen(header.id)} timeout="auto">
+          <Collapse in={checkOpen(header.id)} timeout="auto">
             {urls[0]?.id ?
               urls.map((url) => <UrlCard key={url.id} {...url}></UrlCard>) : (
                 <Box
@@ -119,7 +127,7 @@ const AllUrls = () => {
 
 
       </List>
-      {urls[0]?.id ? (
+      {headers[0]?.id ? (
         // urls.map((url) => <UrlCard key={url.id} {...url}></UrlCard>)
         <div></div>
       )
