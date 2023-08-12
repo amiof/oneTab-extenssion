@@ -58,7 +58,7 @@ const AllUrls = () => {
       .then((data) => {
         setUrls(data.urls);
       })
-    .then((data)=>console.log(data))
+      .then((data) => console.log(data))
   }
 
   function getHeader(): Promise<void> {
@@ -98,15 +98,21 @@ const AllUrls = () => {
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
-          <ListSubheader component="div" id="nested-list-subheader" sx={{ color: "white", background: "#171616" }}>
-             Headers List
-          </ListSubheader>
+          <Box sx={{ display: "flex" }}>
+            <ListSubheader component="div" id="nested-list-subheader" sx={{ color: "white", background: "#171616" }}>
+              Headers List
+            </ListSubheader>
+            <ListSubheader component="div" id="nested-list-subheader" sx={{ color: "white", background: "#171616" }}>
+              selected headers urls : {urls.length}
+            </ListSubheader>
+          </Box>
+
         }
       >
         {headers.map((header) => <>
           <ListItemButton onClick={() => { openSelectedColaps(header.id) }}>
-            <ListItemText primary={header.headerName } sx={{fontSize:"bold"}}/>
-            <ListItemText primary={header.CreateAt} sx={{color:"red"}}/>
+            <ListItemText primary={header.headerName} sx={{ fontSize: "bold" }} />
+            <ListItemText primary={header.CreateAt} sx={{ color: "red" }} />
           </ListItemButton>
           <Collapse in={checkOpen(header.id)} timeout="auto">
             {urls[0]?.id ?
