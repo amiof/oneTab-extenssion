@@ -44,6 +44,8 @@ const AllUrls = () => {
   const [urls, setUrls] = useState<Turls[]>([]);
   const [colaps, setColaps] = useState<boolean>(false)
   const [headers, setHeaders] = useState<Theader[]>([])
+  const [headerIds, setHeaderId] = useState<string>("")
+
 
   function getDataUrls(): Promise<void> {
     return fetch("http://localhost:3000/urls")
@@ -70,7 +72,14 @@ const AllUrls = () => {
     getHeader()
   }, []);
 
-  console.log("outSide", urls[0]);
+  // console.log("outSide", urls[0]);
+  const openSelectedColaps = (headerId: string) => {
+    setHeaderId(headerId)
+    setColaps(!colaps)
+  }
+  const checkOpen=(id:string):boolean|undefined=>{
+   return headerIds==id? !colaps:false
+  }
 
   return (
     <>
@@ -88,10 +97,10 @@ const AllUrls = () => {
         }
       >
         {headers.map((header) => <>
-          <ListItemButton onClick={() => { setColaps(!colaps) }}>
+          <ListItemButton onClick={() => { openSelectedColaps(header.id) }}>
             <ListItemText primary={header.headerName} />
           </ListItemButton>
-          <Collapse in={colaps} timeout="auto">
+          <Collapse  in={checkOpen(header.id)} timeout="auto">
             {urls[0]?.id ?
               urls.map((url) => <UrlCard key={url.id} {...url}></UrlCard>) : (
                 <Box
