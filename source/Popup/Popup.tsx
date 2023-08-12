@@ -34,7 +34,7 @@ const Popup: React.FC = () => {
         <AppBar sx={{background:"#171616"}} position="static" enableColorOnDark={true} >
         <Toolbar variant="regular">
         <Button variant="outlined" size="small" onClick={()=>setOpenDrawer(!openDrawer)}>option</Button>
-            <Typography variant="h6" sx={{margin:"auto"}}>ONE-TAB</Typography>
+            <Typography variant="h6" sx={{margin:"auto"}}>Infinity-Tab</Typography>
         </Toolbar>
         </AppBar>
       </div>
