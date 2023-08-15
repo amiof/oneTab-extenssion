@@ -98,6 +98,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+          },
+        ],
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
