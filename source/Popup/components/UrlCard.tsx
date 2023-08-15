@@ -8,9 +8,11 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
+  Box,
   CardActionArea,
   CardActions,
+  IconButton,
+  Typography,
 } from "@mui/material";
 import { browser } from "webextension-polyfill-ts";
 import { toast } from "react-hot-toast";
@@ -84,7 +86,7 @@ const UrlCard = ({ tabId, url, title, comander, id, fav }: partialTurls) => {
     <div id="record">
       <Accordion
         sx={{
-          width: "70%",
+          width: "90%",
           marginY: "5px",
           background: "#201e1e",
           color: "white",
@@ -93,42 +95,42 @@ const UrlCard = ({ tabId, url, title, comander, id, fav }: partialTurls) => {
         }}
 
       >
-        <AccordionSummary>{title}</AccordionSummary>
+        <AccordionSummary sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography>
+            {title}
+          </Typography>
+          <Box width="content-fit" height="content-fit" sx={{ display: "flex", flexDirection: "row", marginLeft: "auto" }}>
+            <IconButton size="small" color="secondary" onClick={() => { url && openurl(url) }} >
+              <BiShowAlt className="icons" color="green" />
+            </IconButton>
+            <IconButton
+              color="error"
+              size="small"
+              onClick={() => removeTab()}
+              sx={{ marginTop: "5px" }}
+            >
+              <AiFillDelete className="icons" color="red" />
+            </IconButton>
+            <IconButton color="primary" size="small"  sx={{ marginTop: "5px" }}>
+              {!fav?.id ?
+                (
+                  <AiOutlineStar
+                    className="icons"
+                    color="yellow"
+                    onClick={() => { }}
+                  />) : (
+                  <AiFillStar className="icons" color="yellow"> </AiFillStar>
+                )
+              }
+            </IconButton>
+          </Box>
+        </AccordionSummary>
         <AccordionDetails>{url}</AccordionDetails>
         <CardActionArea>
           <CardActions>
-            <Button
-              variant="outlined"
-              color="error"
-              onClick={() => removeTab()}
-            >
-              <AiFillDelete className="icons" color="red" />
-            </Button>
-            <Button variant="outlined" color="primary">
-              <AiOutlineStar
-                className="icons"
-                color="yellow"
-                onClick={() => { }}
-              />
-            </Button>
-            <Button variant="outlined" color="secondary" onClick={() => { url && openurl(url) }} >
-              <BiShowAlt className="icons" color="green" />
-            </Button>
           </CardActions>
         </CardActionArea>
       </Accordion>
-      <div id="ButtonContainer">
-        <BiShowAlt className="icons" color="green" onClick={() => url && openurl(url)} />
-        <AiFillDelete
-          className="icons"
-          color="red"
-          onClick={() => removeTab()}
-        />
-        {!fav?.id ?
-          <AiOutlineStar className="icons" color="yellow" onClick={() => { }} />
-          : <AiFillStar className="icons" color="yellow"> </AiFillStar>
-        }
-      </div>
     </div>
   );
 };
